@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Aim Fish — Ocean Clicker</title>
   <style>
     :root {
@@ -17,26 +17,28 @@
 
     body {
       min-width: 320px;
-      min-height: 100vh;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
       margin: 0;
-      display: grid;
-      place-items: center;
-      padding: 22px;
+      overflow: hidden;
       background:
         radial-gradient(ellipse at 50% 110%, #147c86 0, transparent 53%),
         linear-gradient(160deg, #041e35, #0b425b 65%, #0c5862);
     }
 
     .game {
-      width: min(1120px, 100%);
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
-      border: 1px solid rgb(187 248 255 / 24%);
-      border-radius: 25px;
       background: #0c4860;
-      box-shadow: 0 28px 90px rgb(0 13 32 / 45%), 0 2px 0 rgb(255 255 255 / 10%) inset;
     }
 
     .topbar {
+      flex: 0 0 auto;
       min-height: 90px;
       display: flex;
       align-items: center;
@@ -81,25 +83,27 @@
     }
     .wallet span:first-child { font-size: 19px; }
 
-    .scene-wrap { position: relative; }
+    .scene-wrap {
+      position: relative;
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: hidden;
+    }
 
     canvas {
       width: 100%;
-      height: clamp(390px, 58vw, 590px);
+      height: 100%;
       display: block;
       cursor: crosshair;
       touch-action: manipulation;
     }
 
     @media (max-width: 560px) {
-      body { padding: 10px; }
-      .game { border-radius: 19px; }
       .topbar { min-height: 77px; padding: 13px 15px; }
       .brand-mark { width: 38px; height: 38px; border-radius: 13px; }
       h1 { font-size: 17px; }
       .subtitle { font-size: 11px; }
       .wallet { padding: 9px 11px; font-size: 15px; }
-      canvas { height: 68vh; min-height: 370px; max-height: 540px; }
     }
   </style>
 </head>
